@@ -48,6 +48,8 @@ async function run(): Promise<void> {
     const msTeamsWebhookUri: string = core.getInput('ms-teams-webhook-uri', {
       required: true
     })
+
+    console.log('made it here')
     const notificationSummary =
       core.getInput('notification-summary') || 'GitHub Action'
     const timezone = core.getInput('timezone') || 'UTC'
@@ -60,6 +62,7 @@ async function run(): Promise<void> {
       .tz(timezone)
       .format('dddd, MMMM Do YYYY, h:mm:ss a z')
 
+    console.log('made it here 2')
     const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/')
     const sha = process.env.GITHUB_SHA || ''
     const ref = process.env.GITHUB_REF || ''
@@ -80,6 +83,8 @@ async function run(): Promise<void> {
       allowedFileLenParsed,
       commit.data.html_url
     )
+
+    console.log('made it here 3')
 
     const messageCard = await createMessageCard(
       notificationSummary,

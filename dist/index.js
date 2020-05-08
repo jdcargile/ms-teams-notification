@@ -2981,6 +2981,7 @@ function run() {
             const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
                 required: true
             });
+            console.log("made it here");
             const notificationSummary = core.getInput('notification-summary') || 'GitHub Action';
             const timezone = core.getInput('timezone') || 'UTC';
             const allowedFileLen = core.getInput('allowed-file-len').toLowerCase();
@@ -2988,6 +2989,7 @@ function run() {
             const timestamp = moment_timezone_1.default()
                 .tz(timezone)
                 .format('dddd, MMMM Do YYYY, h:mm:ss a z');
+            console.log("made it here 2");
             const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
             const sha = process.env.GITHUB_SHA || '';
             const ref = process.env.GITHUB_REF || '';
@@ -3002,6 +3004,7 @@ function run() {
             const commit = yield octokit.repos.getCommit(params);
             const author = commit.data.author;
             const filesToDisplay = formatFilesToDisplay(commit.data.files, allowedFileLenParsed, commit.data.html_url);
+            console.log("made it here 3");
             const messageCard = yield message_card_1.createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp);
             console.log(messageCard);
             axios_1.default
