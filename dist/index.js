@@ -2341,11 +2341,11 @@ function createMessageCard(notificationSummary, commit, repo, author, runNum, ru
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
             const messageCard = {
-                "@type": "MessageCard",
-                "@context": "https://schema.org/extensions",
-                summary: "Issue 176715375",
-                themeColor: "0078D7",
-                title: "Issue opened: \"Push notifications not working\"",
+                '@type': 'MessageCard',
+                '@context': 'https://schema.org/extensions',
+                summary: 'Issue 176715375',
+                themeColor: '0078D7',
+                title: 'Issue opened: "Push notifications not working"',
                 sections: [
                     {
                         activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${commit.data.r}](${repoUrl})`,
@@ -2353,12 +2353,12 @@ function createMessageCard(notificationSummary, commit, repo, author, runNum, ru
                         activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
                         facts: [
                             {
-                                name: "Repository:",
-                                value: "mgarcia\\test"
+                                name: 'Repository:',
+                                value: 'mgarcia\\test'
                             },
                             {
-                                name: "Issue #:",
-                                value: "176715375"
+                                name: 'Issue #:',
+                                value: '176715375'
                             }
                         ],
                         text: "There is a problem with Push notifications, they don't seem to be picked up by the connector."
@@ -2366,18 +2366,18 @@ function createMessageCard(notificationSummary, commit, repo, author, runNum, ru
                 ],
                 potentialAction: [
                     {
-                        "@context": "http://schema.org",
+                        '@context': 'http://schema.org',
                         target: [`${repoUrl}/actions/runs/${runId}`],
-                        "@type": "ViewAction",
-                        name: "View Workflow"
+                        '@type': 'ViewAction',
+                        name: 'View Workflow'
                     },
                     {
-                        "@context": "http://schema.org",
+                        '@context': 'http://schema.org',
                         target: [commit.data.html_url],
-                        "@type": "ViewAction",
-                        name: "Review commit diffs"
+                        '@type': 'ViewAction',
+                        name: 'Review commit diffs'
                     }
-                ],
+                ]
             };
             return messageCard;
         });
@@ -2950,23 +2950,23 @@ const axios_1 = __importDefault(__webpack_require__(53));
 const moment_timezone_1 = __importDefault(__webpack_require__(717));
 const message_card_1 = __webpack_require__(131);
 const escapeMarkdownTokens = (text) => text
-    .replace(/\n\ {1,}/g, "\n ")
-    .replace(/\_/g, "\\_")
-    .replace(/\*/g, "\\*")
-    .replace(/\|/g, "\\|")
-    .replace(/#/g, "\\#")
-    .replace(/-/g, "\\-")
-    .replace(/>/g, "\\>");
+    .replace(/\n\ {1,}/g, '\n ')
+    .replace(/\_/g, '\\_')
+    .replace(/\*/g, '\\*')
+    .replace(/\|/g, '\\|')
+    .replace(/#/g, '\\#')
+    .replace(/-/g, '\\-')
+    .replace(/>/g, '\\>');
 const formatFilesToDisplay = (files, allowedLength, htmlUrl) => {
     const filesChanged = files
         .slice(0, allowedLength)
         .map((file) => `[${escapeMarkdownTokens(file.filename)}](${file.blob_url}) (${file.changes} changes)`);
-    let filesToDisplay = "";
+    let filesToDisplay = '';
     if (files.length === 0) {
-        filesToDisplay = "*No files changed.*";
+        filesToDisplay = '*No files changed.*';
     }
     else {
-        filesToDisplay = "* " + filesChanged.join("\n\n* ");
+        filesToDisplay = '* ' + filesChanged.join('\n\n* ');
         if (files.length > 7) {
             const moreLen = files.length - 7;
             filesToDisplay += `\n\n* and [${moreLen} more files](${htmlUrl}) changed`;
@@ -2977,23 +2977,25 @@ const formatFilesToDisplay = (files, allowedLength, htmlUrl) => {
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const githubToken = core.getInput("github-token", { required: true });
-            const msTeamsWebhookUri = core.getInput("ms-teams-webhook-uri", { required: true });
-            const notificationSummary = core.getInput("notification-message") || "GitHub Action";
-            const timezone = core.getInput("timezone") || "UTC";
-            const allowedFileLen = core.getInput("allowed-file-len").toLowerCase();
-            const allowedFileLenParsed = parseInt(allowedFileLen === "" ? "7" : allowedFileLen);
+            const githubToken = core.getInput('github-token', { required: true });
+            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
+                required: true
+            });
+            const notificationSummary = core.getInput('notification-summary') || 'GitHub Action';
+            const timezone = core.getInput('timezone') || 'UTC';
+            const allowedFileLen = core.getInput('allowed-file-len').toLowerCase();
+            const allowedFileLenParsed = parseInt(allowedFileLen === '' ? '7' : allowedFileLen);
             const timestamp = moment_timezone_1.default()
                 .tz(timezone)
-                .format("dddd, MMMM Do YYYY, h:mm:ss a z");
-            const [owner, repo] = (process.env.GITHUB_REPOSITORY || "").split("/");
-            const sha = process.env.GITHUB_SHA || "";
-            const ref = process.env.GITHUB_REF || "";
-            const runId = process.env.GITHUB_RUN_ID || "";
-            const runNum = process.env.GITHUB_RUN_NUMBER || "";
-            const eventName = process.env.GITHUB_EVENT_NAME || "";
+                .format('dddd, MMMM Do YYYY, h:mm:ss a z');
+            const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
+            const sha = process.env.GITHUB_SHA || '';
+            const ref = process.env.GITHUB_REF || '';
+            const runId = process.env.GITHUB_RUN_ID || '';
+            const runNum = process.env.GITHUB_RUN_NUMBER || '';
+            const eventName = process.env.GITHUB_EVENT_NAME || '';
             const params = { owner, repo, ref: sha };
-            const repoName = params.owner + "/" + params.repo;
+            const repoName = params.owner + '/' + params.repo;
             const repoUrl = `https://github.com/${repoName}`;
             const branchUrl = `${repoUrl}/tree/${ref}`;
             const octokit = new rest_1.Octokit({ auth: `token ${githubToken}` });
@@ -3001,7 +3003,8 @@ function run() {
             const author = commit.data.author;
             const filesToDisplay = formatFilesToDisplay(commit.data.files, allowedFileLenParsed, commit.data.html_url);
             const messageCard = message_card_1.createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp);
-            axios_1.default.post(msTeamsWebhookUri, messageCard)
+            axios_1.default
+                .post(msTeamsWebhookUri, { summary: "test", sections: { activityTitle: "test" } })
                 .then(function (response) {
                 core.debug(response.data);
             })

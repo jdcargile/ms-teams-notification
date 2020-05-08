@@ -97,7 +97,10 @@ async function run(): Promise<void> {
     )
 
     axios
-      .post(msTeamsWebhookUri, messageCard)
+      .post(msTeamsWebhookUri, {
+        summary: 'test',
+        sections: {activityTitle: 'test'}
+      })
       .then(function(response) {
         core.debug(response.data)
       })
