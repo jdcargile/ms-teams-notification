@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
+import axios from 'axios';
 import { wait } from './wait';
-const axios = require('axios').default;
 
 async function run(): Promise<void> {
   try {
