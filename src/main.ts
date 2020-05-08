@@ -14,10 +14,10 @@ async function run(): Promise<void> {
 		body: notificationMessage
 	})
 	.then(function (response) {
-		console.log(response);
+		core.debug(response.data);
 	})
 	.catch(function (error) {
-		console.log(error);
+		core.debug(error);
 	});
 
     core.debug(new Date().toTimeString())
