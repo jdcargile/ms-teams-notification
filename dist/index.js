@@ -858,11 +858,13 @@ const axios_1 = __importDefault(__webpack_require__(53));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', { required: true });
+            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
+                required: true
+            });
             axios_1.default
                 .post(msTeamsWebhookUri, {
                 summary: 'test',
-                sections: { activityTitle: 'test' }
+                sections: [{ activityTitle: 'test' }]
             })
                 .then(function (response) {
                 console.log(response);

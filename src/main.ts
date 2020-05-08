@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     axios
       .post(msTeamsWebhookUri, {
         summary: 'test',
-        sections: {activityTitle: 'test'}
+        sections: [{activityTitle: 'test'}]
       })
       .then(function(response) {
         console.log(response)

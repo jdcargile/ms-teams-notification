@@ -4,19 +4,19 @@ author: 'jdcargile'
 inputs:
   github-token:
     description: 'GitHub Token'
-    required: true
+    required: false
   ms-teams-webhook-uri:
     description: 'Microsoft Teams Webhook URI'
-    required: true
+    required: false
   notification-summary:
     description: 'Message to be sent to Microsoft Teams channel'
-    required: true
+    required: false
   timezone:
     description: 'Timezone (ex. America/Denver)'
-    required: true
+    required: false
   allowed-file-len:
     description: 'Maximum number of file changes to show'
-    required: true
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
