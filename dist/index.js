@@ -2327,61 +2327,48 @@ module.exports = require("child_process");
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 function createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise(resolve => {
-            const messageCard = {
-                '@type': 'MessageCard',
-                '@context': 'https://schema.org/extensions',
-                summary: 'Issue 176715375',
-                themeColor: '0078D7',
-                title: 'Issue opened: "Push notifications not working"',
-                sections: [
+    const messageCard = {
+        '@type': 'MessageCard',
+        '@context': 'https://schema.org/extensions',
+        summary: 'Issue 176715375',
+        themeColor: '0078D7',
+        title: 'Issue opened: "Push notifications not working"',
+        sections: [
+            {
+                activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${commit.data.r}](${repoUrl})`,
+                activityImage: author.avatar_url,
+                activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+                facts: [
                     {
-                        activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${commit.data.r}](${repoUrl})`,
-                        activityImage: author.avatar_url,
-                        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
-                        facts: [
-                            {
-                                name: 'Repository:',
-                                value: 'mgarcia\\test'
-                            },
-                            {
-                                name: 'Issue #:',
-                                value: '176715375'
-                            }
-                        ],
-                        text: "There is a problem with Push notifications, they don't seem to be picked up by the connector."
-                    }
-                ],
-                potentialAction: [
-                    {
-                        '@context': 'http://schema.org',
-                        target: [`${repoUrl}/actions/runs/${runId}`],
-                        '@type': 'ViewAction',
-                        name: 'View Workflow'
+                        name: 'Repository:',
+                        value: 'mgarcia\\test'
                     },
                     {
-                        '@context': 'http://schema.org',
-                        target: [commit.data.html_url],
-                        '@type': 'ViewAction',
-                        name: 'Review commit diffs'
+                        name: 'Issue #:',
+                        value: '176715375'
                     }
-                ]
-            };
-            return messageCard;
-        });
-    });
+                ],
+                text: "There is a problem with Push notifications, they don't seem to be picked up by the connector."
+            }
+        ],
+        potentialAction: [
+            {
+                '@context': 'http://schema.org',
+                target: [`${repoUrl}/actions/runs/${runId}`],
+                '@type': 'ViewAction',
+                name: 'View Workflow'
+            },
+            {
+                '@context': 'http://schema.org',
+                target: [commit.data.html_url],
+                '@type': 'ViewAction',
+                name: 'Review commit diffs'
+            }
+        ]
+    };
+    return messageCard;
 }
 exports.createMessageCard = createMessageCard;
 
@@ -2981,7 +2968,7 @@ function run() {
             const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
                 required: true
             });
-            console.log("made it here");
+            console.log('made it here');
             const notificationSummary = core.getInput('notification-summary') || 'GitHub Action';
             const timezone = core.getInput('timezone') || 'UTC';
             const allowedFileLen = core.getInput('allowed-file-len').toLowerCase();
@@ -2989,7 +2976,7 @@ function run() {
             const timestamp = moment_timezone_1.default()
                 .tz(timezone)
                 .format('dddd, MMMM Do YYYY, h:mm:ss a z');
-            console.log("made it here 2");
+            console.log('made it here 2');
             const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
             const sha = process.env.GITHUB_SHA || '';
             const ref = process.env.GITHUB_REF || '';
@@ -3004,7 +2991,7 @@ function run() {
             const commit = yield octokit.repos.getCommit(params);
             const author = commit.data.author;
             const filesToDisplay = formatFilesToDisplay(commit.data.files, allowedFileLenParsed, commit.data.html_url);
-            console.log("made it here 3");
+            console.log('made it here 3');
             const messageCard = yield message_card_1.createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp);
             console.log(messageCard);
             axios_1.default
