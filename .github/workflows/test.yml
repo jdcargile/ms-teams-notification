@@ -20,6 +20,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ./
       with: 
-        milliseconds: 1000
+        github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        message: "test message" 
+        notification-summary: test message
+        timezone: America/Denver 

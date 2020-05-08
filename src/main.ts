@@ -48,7 +48,7 @@ async function run(): Promise<void> {
   try {
 	const githubToken = core.getInput("github-token", { required: true });
 	const msTeamsWebhookUri: string = core.getInput("ms-teams-webhook-uri", { required: true });
-	const notificationSummary = core.getInput("notification-message") || "GitHub Action";
+	const notificationSummary= core.getInput("notification-summary") || "GitHub Action";
 	const timezone = core.getInput("timezone") || "UTC";
 	const allowedFileLen = core.getInput("allowed-file-len").toLowerCase();
 	const allowedFileLenParsed = parseInt(

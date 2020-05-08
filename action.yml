@@ -2,11 +2,20 @@ name: 'Microsoft Teams Notification'
 description: 'Send a simple notification message to a Microsoft Teams channel'
 author: 'jdcargile'
 inputs:
+  github-token:
+    description: 'GitHub Token'
+    required: true
   ms-teams-webhook-uri:
     description: 'Microsoft Teams Webhook URI'
     required: true
-  message:
+  notification-summary:
     description: 'Message to be sent to Microsoft Teams channel'
+    required: true
+  timezone:
+    description: 'Timezone (ex. America/Denver)'
+    required: true
+  allowed-file-len:
+    description: 'Maximum number of file changes to show'
     required: true
 runs:
   using: 'node12'
