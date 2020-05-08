@@ -26,10 +26,15 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0",
-    "axios": "^0.19.2"
+    "@octokit/graphql": "^4.4.0",
+    "@octokit/rest": "^17.8.0",
+    "axios": "^0.19.2",
+    "moment-timezone": "^0.5.28",
+    "octokit": "^1.0.0-hello-world"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
+    "@types/moment-timezone": "^0.5.13",
     "@types/node": "^12.7.12",
     "@typescript-eslint/parser": "^2.8.0",
     "@zeit/ncc": "^0.20.5",
