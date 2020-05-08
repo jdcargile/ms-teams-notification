@@ -13,10 +13,10 @@ async function run(): Promise<void> {
 	axios.post(msTeamsWebhookUri, {
 		body: notificationMessage
 	})
-	.then(function (response: any) {
+	.then(function (response) {
 		console.log(response);
 	})
-	.catch(function (error: any) {
+	.catch(function (error) {
 		console.log(error);
 	});
 
