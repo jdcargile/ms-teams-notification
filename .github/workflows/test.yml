@@ -21,3 +21,5 @@ jobs:
     - uses: ./
       with: 
         milliseconds: 1000
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        message: "test message" 

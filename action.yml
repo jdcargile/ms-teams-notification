@@ -1,10 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Microsoft Teams Notification'
+description: 'Send a simple notification message to a Microsoft Teams channel'
+author: 'jdcargile'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  ms-teams-webhook-uri:
+    description: 'Microsoft Teams Webhook URI'
+    required: true
+  message:
+    description: 'Message to be sent to Microsoft Teams channel'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
