@@ -17,9 +17,12 @@ export function createMessageCard(
     title: notificationSummary,
     sections: [
       {
-        activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${repoName}](${repoUrl})`,
+        activityTitle: `**CI #${runNum} (commit ${sha.substr(
+          0,
+          7
+        )})** on [${repoName}](${repoUrl})`,
         activityImage: author.avatar_url,
-        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`
       }
     ],
     potentialAction: [

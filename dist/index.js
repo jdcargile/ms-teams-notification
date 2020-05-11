@@ -2328,29 +2328,18 @@ module.exports = require("child_process");
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-function createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp) {
+function createMessageCard(notificationSummary, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp) {
     const messageCard = {
         '@type': 'MessageCard',
         '@context': 'https://schema.org/extensions',
-        summary: 'Issue 176715375',
+        summary: notificationSummary,
         themeColor: '0078D7',
-        title: 'Issue opened: "Push notifications not working"',
+        title: notificationSummary,
         sections: [
             {
-                activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${commit.data.r}](${repoUrl})`,
+                activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${repoName}](${repoUrl})`,
                 activityImage: author.avatar_url,
                 activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
-                facts: [
-                    {
-                        name: 'Repository:',
-                        value: 'mgarcia\\test'
-                    },
-                    {
-                        name: 'Issue #:',
-                        value: '176715375'
-                    }
-                ],
-                text: "There is a problem with Push notifications, they don't seem to be picked up by the connector."
             }
         ],
         potentialAction: [
@@ -2944,55 +2933,27 @@ const escapeMarkdownTokens = (text) => text
     .replace(/#/g, '\\#')
     .replace(/-/g, '\\-')
     .replace(/>/g, '\\>');
-const formatFilesToDisplay = (files, allowedLength, htmlUrl) => {
-    const filesChanged = files
-        .slice(0, allowedLength)
-        .map((file) => `[${escapeMarkdownTokens(file.filename)}](${file.blob_url}) (${file.changes} changes)`);
-    let filesToDisplay = '';
-    if (files.length === 0) {
-        filesToDisplay = '*No files changed.*';
-    }
-    else {
-        filesToDisplay = '* ' + filesChanged.join('\n\n* ');
-        if (files.length > 7) {
-            const moreLen = files.length - 7;
-            filesToDisplay += `\n\n* and [${moreLen} more files](${htmlUrl}) changed`;
-        }
-    }
-    return filesToDisplay;
-};
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const githubToken = core.getInput('github-token', { required: true });
-            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
-                required: true
-            });
-            console.log('made it here');
-            const notificationSummary = core.getInput('notification-summary') || 'GitHub Action';
+            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', { required: true });
+            const notificationSummary = core.getInput('notification-summary') || 'GitHub Action Notification';
             const timezone = core.getInput('timezone') || 'UTC';
-            const allowedFileLen = core.getInput('allowed-file-len').toLowerCase();
-            const allowedFileLenParsed = parseInt(allowedFileLen === '' ? '7' : allowedFileLen);
             const timestamp = moment_timezone_1.default()
                 .tz(timezone)
                 .format('dddd, MMMM Do YYYY, h:mm:ss a z');
-            console.log('made it here 2');
             const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
             const sha = process.env.GITHUB_SHA || '';
-            const ref = process.env.GITHUB_REF || '';
             const runId = process.env.GITHUB_RUN_ID || '';
             const runNum = process.env.GITHUB_RUN_NUMBER || '';
-            const eventName = process.env.GITHUB_EVENT_NAME || '';
             const params = { owner, repo, ref: sha };
             const repoName = params.owner + '/' + params.repo;
             const repoUrl = `https://github.com/${repoName}`;
-            const branchUrl = `${repoUrl}/tree/${ref}`;
             const octokit = new rest_1.Octokit({ auth: `token ${githubToken}` });
             const commit = yield octokit.repos.getCommit(params);
             const author = commit.data.author;
-            const filesToDisplay = formatFilesToDisplay(commit.data.files, allowedFileLenParsed, commit.data.html_url);
-            console.log('made it here 3');
-            const messageCard = yield message_card_1.createMessageCard(notificationSummary, commit, repo, author, runNum, runId, eventName, branchUrl, repoName, sha, repoUrl, timestamp);
+            const messageCard = yield message_card_1.createMessageCard(notificationSummary, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp);
             console.log(messageCard);
             axios_1.default
                 .post(msTeamsWebhookUri, messageCard)

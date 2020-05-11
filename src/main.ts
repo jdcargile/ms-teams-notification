@@ -1,8 +1,8 @@
 import * as core from '@actions/core'
-import { Octokit } from '@octokit/rest'
+import {Octokit} from '@octokit/rest'
 import axios from 'axios'
 import moment from 'moment-timezone'
-import { createMessageCard } from './message-card'
+import {createMessageCard} from './message-card'
 
 const escapeMarkdownTokens = (text: string) =>
   text
@@ -17,9 +17,12 @@ const escapeMarkdownTokens = (text: string) =>
 async function run(): Promise<void> {
   try {
     const githubToken = core.getInput('github-token', {required: true})
-    const msTeamsWebhookUri: string = core.getInput('ms-teams-webhook-uri', { required: true })
+    const msTeamsWebhookUri: string = core.getInput('ms-teams-webhook-uri', {
+      required: true
+    })
 
-    const notificationSummary = core.getInput('notification-summary') || 'GitHub Action Notification'
+    const notificationSummary =
+      core.getInput('notification-summary') || 'GitHub Action Notification'
     const timezone = core.getInput('timezone') || 'UTC'
 
     const timestamp = moment()
