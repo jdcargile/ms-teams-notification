@@ -2328,18 +2328,18 @@ module.exports = require("child_process");
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-function createMessageCard(notificationSummary, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp) {
+function createMessageCard(notificationSummary, notificationColor, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp) {
     const messageCard = {
         '@type': 'MessageCard',
         '@context': 'https://schema.org/extensions',
         summary: notificationSummary,
-        themeColor: '0078D7',
+        themeColor: notificationColor,
         title: notificationSummary,
         sections: [
             {
                 activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${repoName}](${repoUrl})`,
                 activityImage: author.avatar_url,
-                activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+                activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`
             }
         ],
         potentialAction: [
@@ -2347,13 +2347,13 @@ function createMessageCard(notificationSummary, commit, author, runNum, runId, r
                 '@context': 'http://schema.org',
                 target: [`${repoUrl}/actions/runs/${runId}`],
                 '@type': 'ViewAction',
-                name: 'View Workflow'
+                name: 'View Workflow Run'
             },
             {
                 '@context': 'http://schema.org',
                 target: [commit.data.html_url],
                 '@type': 'ViewAction',
-                name: 'Review commit diffs'
+                name: 'View Commit Changes'
             }
         ]
     };
@@ -2937,8 +2937,11 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const githubToken = core.getInput('github-token', { required: true });
-            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', { required: true });
+            const msTeamsWebhookUri = core.getInput('ms-teams-webhook-uri', {
+                required: true
+            });
             const notificationSummary = core.getInput('notification-summary') || 'GitHub Action Notification';
+            const notificationColor = core.getInput('notification-color') || '0b93ff';
             const timezone = core.getInput('timezone') || 'UTC';
             const timestamp = moment_timezone_1.default()
                 .tz(timezone)
@@ -2953,7 +2956,7 @@ function run() {
             const octokit = new rest_1.Octokit({ auth: `token ${githubToken}` });
             const commit = yield octokit.repos.getCommit(params);
             const author = commit.data.author;
-            const messageCard = yield message_card_1.createMessageCard(notificationSummary, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp);
+            const messageCard = yield message_card_1.createMessageCard(notificationSummary, notificationColor, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp);
             console.log(messageCard);
             axios_1.default
                 .post(msTeamsWebhookUri, messageCard)
