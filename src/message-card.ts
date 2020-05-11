@@ -1,12 +1,9 @@
 export function createMessageCard(
   notificationSummary: string,
   commit: any,
-  repo: any,
   author: any,
   runNum: string,
   runId: string,
-  eventName: string,
-  branchUrl: string,
   repoName: string,
   sha: string,
   repoUrl: string,
@@ -15,28 +12,14 @@ export function createMessageCard(
   const messageCard = {
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
-    summary: 'Issue 176715375',
+    summary: notificationSummary,
     themeColor: '0078D7',
-    title: 'Issue opened: "Push notifications not working"',
+    title: notificationSummary,
     sections: [
       {
-        activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${
-          commit.data.r
-        }](${repoUrl})`,
+        activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${repoName}](${repoUrl})`,
         activityImage: author.avatar_url,
         activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
-        facts: [
-          {
-            name: 'Repository:',
-            value: 'mgarcia\\test'
-          },
-          {
-            name: 'Issue #:',
-            value: '176715375'
-          }
-        ],
-        text:
-          "There is a problem with Push notifications, they don't seem to be picked up by the connector."
       }
     ],
     potentialAction: [

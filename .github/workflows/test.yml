@@ -23,5 +23,5 @@ jobs:
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: test message
+        notification-summary: Sending a test message 
         timezone: America/Denver 
