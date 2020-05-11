@@ -24,4 +24,5 @@ jobs:
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         notification-summary: Sending a test message 
+        notification-color: 0b93ff
         timezone: America/Denver 

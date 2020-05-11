@@ -1,5 +1,6 @@
 export function createMessageCard(
   notificationSummary: string,
+  notificationColor: string,
   commit: any,
   author: any,
   runNum: string,
@@ -13,7 +14,7 @@ export function createMessageCard(
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
     summary: notificationSummary,
-    themeColor: '0078D7',
+    themeColor: notificationColor,
     title: notificationSummary,
     sections: [
       {
@@ -30,13 +31,13 @@ export function createMessageCard(
         '@context': 'http://schema.org',
         target: [`${repoUrl}/actions/runs/${runId}`],
         '@type': 'ViewAction',
-        name: 'View Workflow'
+        name: 'View Workflow Run'
       },
       {
         '@context': 'http://schema.org',
         target: [commit.data.html_url],
         '@type': 'ViewAction',
-        name: 'Review commit diffs'
+        name: 'View Commit Changes'
       }
     ]
   }
