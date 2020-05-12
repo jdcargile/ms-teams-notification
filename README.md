@@ -6,7 +6,7 @@
 A GitHub Action that sends customizable notifications to a dedicated Microsoft Teams channel.
 
 ## Usage
-1. Add `MS_TEAMS_WEBHOOK_URI` on your repository's configs on Settings > Secrets. It is the [webhook URI](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) of the dedicated Microsoft Teams channel for notification.
+1. Add `MS_TEAMS_WEBHOOK_URI` on your repository's configs on Settings > Secrets. It is the [Webhook URI](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) of the dedicated Microsoft Teams channel for notification.
 
 2) Add a new `step` on your workflow code below `actions/checkout@v2`:
 
@@ -25,11 +25,11 @@ jobs:
       - name: Notify dedicated teams channel
         uses: jdcargile/ms-teams-notification
         with:
-          github-token: ${{ github.token }} # this will use the runner's token.
-          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-		  notification-summary: Your custom notification message 
-		  notification-color: 17a2b8 
-          timezone: America/Denver
+		github-token: ${{ github.token }} # this will use the runner's token.
+		ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+		notification-summary: Your custom notification message 
+		notification-color: 17a2b8
+		timezone: America/Denver
 ```
 
 3. Make it your own with the following configurations.
