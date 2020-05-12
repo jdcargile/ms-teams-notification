@@ -1,4 +1,4 @@
-name: "build-test"
+name: "Build & Test"
 on: # rebuild any PRs and main branch changes
   repository_dispatch:
   pull_request:
@@ -18,11 +18,39 @@ jobs:
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: Sending a test message 
-        notification-color: 0b93ff
+        notification-summary: Deployment Started 
+        notification-color: 17a2b8
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: Warning! Something Not Quite Right 
+        notification-color: ffc107
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: OMG!! Something Exploded
+        notification-color: dc3545
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: Whew! Everything is right with the world again! 
+        notification-color: 28a745 
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: "Emojify! :rocket:​​ ​​​​​​​​​:100: :checkered_flag:"
+        notification-color: 28a745 
         timezone: America/Denver 

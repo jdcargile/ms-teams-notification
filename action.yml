@@ -1,9 +1,9 @@
 name: 'Microsoft Teams Notification'
-description: 'Send a simple notification message to a Microsoft Teams channel with GitHub context'
+description: 'Send a custom notification message to a Microsoft Teams channel with GitHub repo details'
 author: 'jdcargile'
 inputs:
   github-token:
-    description: 'GitHub Token'
+    description: 'GitHub Token (ex. ${{ github.token }}'
     required: true 
   ms-teams-webhook-uri:
     description: 'Microsoft Teams Webhook URI'
