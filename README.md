@@ -11,7 +11,7 @@ A GitHub Action that sends customizable notifications to a dedicated Microsoft T
 2) Add a new `step` on your workflow code below `actions/checkout@v2`:
 
 ```yaml
-name: MS Teams Deploy Card
+name: MS Teams Notification
 
 on: [push, pull_request]
 
