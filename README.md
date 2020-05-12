@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/jdcargile/ms-teams-notification/actions"><img alt="ms-teams-notification status" src="https://github.com/jdcargile/ms-teams-notification/workflows/Build%20&%20Test/badge.svg"></a>
 </p>
 
 # Microsoft Teams Notification 
@@ -39,3 +39,10 @@ jobs:
    - `notification-summary` (required), Your custom notification message (ex. Deployment Started or Build Successful)
    - `notification-color` (optional), Custom color to help distinguish type of notification. Can be any [HEX color](https://html-color.codes/). (ex. **007bff** or **17a2b8** for info, **28a745** success, **ffc107** warning, **dc3545** error, etc.) 
    - `timezone` - (optional, defaults to `UTC`), a [valid database timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), (ex. Australia/Sydney or America/Denver, etc.)
+
+## Examples
+As you can see below, the `notification-summary` and `notification-color` are being used to customize the appearance of the message. Use bright vibrant colors to notify your Microsoft Teams channel of warnings or errors in your GitHub Actions workflow.
+
+<p align="center">
+<img src="notification-color-screenshots.png">
+</p>
