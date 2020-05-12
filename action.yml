@@ -3,7 +3,7 @@ description: 'Send a custom notification message to a Microsoft Teams channel wi
 author: 'jdcargile'
 inputs:
   github-token:
-    description: 'GitHub Token (ex. ${{ github.token }}'
+    description: 'GitHub Token'
     required: true 
   ms-teams-webhook-uri:
     description: 'Microsoft Teams Webhook URI'
