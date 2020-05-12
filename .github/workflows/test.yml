@@ -1,0 +1,28 @@
+name: "build-test"
+on: # rebuild any PRs and main branch changes
+  repository_dispatch:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  build: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: |
+        npm install
+        npm run all
+  test: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: Sending a test message 
+        notification-color: 0b93ff
+        timezone: America/Denver 

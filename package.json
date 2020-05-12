@@ -1,0 +1,49 @@
+{
+  "name": "typescript-action",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TypeScript template action",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "pack": "ncc build",
+    "all": "npm run build && npm run format && npm run pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actions/typescript-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "jdcargile",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@octokit/graphql": "^4.4.0",
+    "@octokit/rest": "^17.8.0",
+    "axios": "^0.19.2",
+    "moment-timezone": "^0.5.28",
+    "octokit": "^1.0.0-hello-world"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/moment-timezone": "^0.5.13",
+    "@types/node": "^12.7.12",
+    "@typescript-eslint/parser": "^2.8.0",
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^5.16.0",
+    "eslint-plugin-github": "^2.0.0",
+    "eslint-plugin-jest": "^22.21.0",
+    "jest": "^24.9.0",
+    "jest-circus": "^24.9.0",
+    "js-yaml": "^3.13.1",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.6.4"
+  }
+}

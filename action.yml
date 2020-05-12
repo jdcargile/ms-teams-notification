@@ -1,0 +1,22 @@
+name: 'Microsoft Teams Notification'
+description: 'Send a simple notification message to a Microsoft Teams channel with GitHub context'
+author: 'jdcargile'
+inputs:
+  github-token:
+    description: 'GitHub Token'
+    required: true 
+  ms-teams-webhook-uri:
+    description: 'Microsoft Teams Webhook URI'
+    required: true 
+  notification-summary:
+    description: 'Message to be sent to Microsoft Teams channel'
+    required: true 
+  notification-color:
+    description: 'Color of notification header line'
+    required: true 
+  timezone:
+    description: 'Timezone (ex. America/Denver)'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
