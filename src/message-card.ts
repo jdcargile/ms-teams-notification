@@ -8,15 +8,21 @@ export function createMessageCard(
   repoName: string,
   sha: string,
   repoUrl: string,
-  timestamp: string
+  timestamp: string,
+  releaseTitle: string | null,
+  releaseMessage?: string | null
 ): any {
-  const messageCard = {
+  return {
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
     summary: notificationSummary,
     themeColor: notificationColor,
     title: notificationSummary,
     sections: [
+      {
+        activityTitle: releaseTitle,
+        activityText: releaseMessage
+      },
       {
         activityTitle: `**CI #${runNum} (commit ${sha.substr(
           0,
@@ -29,17 +35,10 @@ export function createMessageCard(
     potentialAction: [
       {
         '@context': 'http://schema.org',
-        target: [`${repoUrl}/actions/runs/${runId}`],
-        '@type': 'ViewAction',
-        name: 'View Workflow Run'
-      },
-      {
-        '@context': 'http://schema.org',
         target: [commit.data.html_url],
         '@type': 'ViewAction',
         name: 'View Commit Changes'
       }
     ]
   }
-  return messageCard
 }

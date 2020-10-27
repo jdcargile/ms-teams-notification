@@ -23,6 +23,10 @@ async function run(): Promise<void> {
 
     const notificationSummary =
       core.getInput('notification-summary') || 'GitHub Action Notification'
+
+    const releaseTitle =
+      core.getInput('release-title') || 'Release notes'
+
     const notificationColor = core.getInput('notification-color') || '0b93ff'
     const timezone = core.getInput('timezone') || 'UTC'
 
@@ -42,6 +46,9 @@ async function run(): Promise<void> {
     const commit = await octokit.repos.getCommit(params)
     const author = commit.data.author
 
+    const notificationText =
+      core.getInput('notification-text') || commit.data.commit.message
+
     const messageCard = await createMessageCard(
       notificationSummary,
       notificationColor,
@@ -52,7 +59,9 @@ async function run(): Promise<void> {
       repoName,
       sha,
       repoUrl,
-      timestamp
+      timestamp,
+      releaseTitle,
+      notificationText,
     )
 
     console.log(messageCard)
