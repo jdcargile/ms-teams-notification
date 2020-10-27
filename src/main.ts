@@ -24,8 +24,7 @@ async function run(): Promise<void> {
     const notificationSummary =
       core.getInput('notification-summary') || 'GitHub Action Notification'
 
-    const releaseTitle =
-      core.getInput('release-title') || 'Release notes'
+    const releaseTitle = core.getInput('release-title') || 'Release notes'
 
     const notificationColor = core.getInput('notification-color') || '0b93ff'
     const timezone = core.getInput('timezone') || 'UTC'
@@ -61,7 +60,7 @@ async function run(): Promise<void> {
       repoUrl,
       timestamp,
       releaseTitle,
-      notificationText,
+      notificationText
     )
 
     console.log(messageCard)
