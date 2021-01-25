@@ -2448,10 +2448,10 @@ function createMessageCard(notificationSummary, notificationColor, commit, autho
             avatar_url = author.avatar_url;
         }
     }
-    let author_url = "";
+    let author_url = '';
     if (author) {
         if (author.login && author.html_url) {
-            author_url = "[(@${author.login})](${author.html_url})";
+            author_url = `[(@${author.login})](${author.html_url})`;
         }
     }
     const messageCard = {

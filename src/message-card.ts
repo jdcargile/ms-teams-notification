@@ -20,7 +20,7 @@ export function createMessageCard(
   let author_url = ''
   if (author) {
     if (author.login && author.html_url) {
-      author_url = '[(@${author.login})](${author.html_url})'
+      author_url = `[(@${author.login})](${author.html_url})`
     }
   }
   const messageCard = {
