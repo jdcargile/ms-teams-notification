@@ -17,6 +17,12 @@ export function createMessageCard(
       avatar_url = author.avatar_url
     }
   }
+  let author_url = ''
+  if (author) {
+    if (author.login && author.html_url) {
+      author_url = `[(@${author.login})](${author.html_url})`
+    }
+  }
   const messageCard = {
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
@@ -30,7 +36,7 @@ export function createMessageCard(
           7
         )})** on [${repoName}](${repoUrl})`,
         activityImage: avatar_url,
-        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`
+        activitySubtitle: `by ${commit.data.commit.author.name} ${author_url} on ${timestamp}`
       }
     ],
     potentialAction: [
