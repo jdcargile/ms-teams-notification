@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
-        uses: cinch-labs/ms-teams-notification@v1.3
+        uses: cinch-labs/ms-teams-notification@v1.4
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
