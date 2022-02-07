@@ -12,7 +12,15 @@ export function createMessageCard(
   releaseTitle: string | null,
   releaseMessage?: string | null
 ): any {
-  return {
+  let avatar_url =
+    'https://www.gravatar.com/avatar/05b6d8cc7c662bf81e01b39254f88a48?d=identicon'
+  if (author) {
+    if (author.avatar_url) {
+      avatar_url = author.avatar_url
+    }
+  }
+
+  const messageCard = {
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
     summary: notificationSummary,
@@ -28,7 +36,7 @@ export function createMessageCard(
           0,
           7
         )})** on [${repoName}](${repoUrl})`,
-        activityImage: author.avatar_url,
+        activityImage: avatar_url,
         activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`
       }
     ],
@@ -41,4 +49,6 @@ export function createMessageCard(
       }
     ]
   }
+
+  return messageCard
 }
