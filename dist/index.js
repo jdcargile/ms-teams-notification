@@ -2443,7 +2443,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createMessageCard = void 0;
 function createMessageCard(notificationSummary, notificationColor, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp) {
     let avatar_url = 'https://www.gravatar.com/avatar/05b6d8cc7c662bf81e01b39254f88a48?d=identicon';
-    if (author) {
+    if (author && author.hasOwnProperty('avatar_url')) {
         if (author.avatar_url) {
             avatar_url = author.avatar_url;
         }
