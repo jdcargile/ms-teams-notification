@@ -43,6 +43,12 @@ export function createMessageCard(
     potentialAction: [
       {
         '@context': 'http://schema.org',
+        target: [`${repoUrl}/actions/runs/${runId}`],
+        '@type': 'ViewAction',
+        name: 'View Workflow Run'
+      },
+      {
+        '@context': 'http://schema.org',
         target: [commit.data.html_url],
         '@type': 'ViewAction',
         name: 'View Commit Changes'
