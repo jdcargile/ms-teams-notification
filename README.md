@@ -40,7 +40,7 @@ jobs:
    - `notification-summary` (required), Your custom notification message (ex. Deployment Started or Build Successful)
    - `notification-color` (optional), Custom color to help distinguish type of notification. Can be any [HEX color](https://html-color.codes/). (ex. **007bff** or **17a2b8** for info, **28a745** success, **ffc107** warning, **dc3545** error, etc.) 
    - `timezone` - (optional, defaults to `UTC`), a [valid database timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), (ex. Australia/Sydney or America/Denver, etc.)
-   - `vebose-logging` - (optional, defaults to `false`), Emits additional logging showing the sent message card and response from the webhook.
+   - `verbose-logging` - (optional, defaults to `false`), Emits additional logging showing the sent message card and response from the webhook.
 
 ## Examples
 As you can see below, the `notification-summary` and `notification-color` are being used to customize the appearance of the message. Use bright vibrant colors to notify your Microsoft Teams channel of warnings or errors in your GitHub Actions workflow.
