@@ -22,6 +22,7 @@ inputs:
     required: false
   verbose-logging:
     description: 'Enable verbose logging'
+    default: 'false'
     required: false
 runs:
   using: 'node12'
