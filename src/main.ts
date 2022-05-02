@@ -20,6 +20,7 @@ async function run(): Promise<void> {
     const msTeamsWebhookUri: string = core.getInput('ms-teams-webhook-uri', {
       required: true
     })
+
     const notificationSummary =
       core.getInput('notification-summary') || 'GitHub Action Notification'
     const notificationColor = core.getInput('notification-color') || '0b93ff'
