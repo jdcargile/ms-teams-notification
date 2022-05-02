@@ -20,6 +20,9 @@ inputs:
   timezone:
     description: 'Timezone (ex. America/Denver)'
     required: false
+  verbose-logging:
+    description: 'Enable verbose logging'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
