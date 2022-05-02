@@ -20,12 +20,11 @@ async function run(): Promise<void> {
     const msTeamsWebhookUri: string = core.getInput('ms-teams-webhook-uri', {
       required: true
     })
-
     const notificationSummary =
       core.getInput('notification-summary') || 'GitHub Action Notification'
     const notificationColor = core.getInput('notification-color') || '0b93ff'
     const timezone = core.getInput('timezone') || 'UTC'
-
+    const verboseLogging: boolean = core.getInput('verbose-logging')
     const timestamp = moment()
       .tz(timezone)
       .format('dddd, MMMM Do YYYY, h:mm:ss a z')
@@ -55,12 +54,16 @@ async function run(): Promise<void> {
       timestamp
     )
 
-    console.log(messageCard)
+    if(verboseLogging){
+      console.log(messageCard)
+    }
 
     axios
       .post(msTeamsWebhookUri, messageCard)
       .then(function(response) {
-        console.log(response)
+        if(verboseLogging){
+          console.log(response)
+        }
         core.debug(response.data)
       })
       .catch(function(error) {
