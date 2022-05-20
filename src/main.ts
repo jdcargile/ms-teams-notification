@@ -36,9 +36,14 @@ async function run(): Promise<void> {
     const runNum = process.env.GITHUB_RUN_NUMBER || ''
     const params = {owner, repo, ref: sha}
     const repoName = params.owner + '/' + params.repo
-    const repoUrl = `https://github.com/${repoName}`
+    const baseUrl = process.env.GITHUB_SERVER_URL || 'https://github.com'
+    const apiBaseUrl = process.env.GITHUB_API_URL || ''
+    const repoUrl = `${baseUrl}/${repoName}`
 
-    const octokit = new Octokit({auth: `token ${githubToken}`})
+    const octokit = new Octokit({
+      auth: `token ${githubToken}`,
+      baseUrl: apiBaseUrl
+    })
     const commit = await octokit.repos.getCommit(params)
     const author = commit.data.author
 
