@@ -27,7 +27,7 @@
     "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^17.11.2",
     "axios": "^0.19.2",
-    "moment-timezone": "^0.5.32",
+    "moment-timezone": "^0.5.35",
     "octokit": "^1.0.0-hello-world"
   },
   "devDependencies": {
