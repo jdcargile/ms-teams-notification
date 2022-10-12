@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/jest": "^24.9.1",
     "@types/moment-timezone": "^0.5.30",
-    "@types/node": "^12.19.9",
+    "@types/node": "^16.11.65",
     "@typescript-eslint/parser": "^2.34.0",
     "@zeit/ncc": "^0.20.5",
     "eslint": "^5.16.0",
