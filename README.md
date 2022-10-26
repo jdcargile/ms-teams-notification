@@ -8,6 +8,12 @@ Usage:
 ```yaml
 - name: Microsoft Teams Notifications DC
   uses: dragos-cojocari/ms-teams-notification@v1.0.0
+  with:
+    github-token: ${{ github.token }} # this will use the runner's token.
+    ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+    notification-summary: Your custom notification message 
+    notification-color: 17a2b8
+    timezone: Europe/Bucharest
 ```
 
 For more details on syntax and parameteres see https://github.com/jdcargile/ms-teams-notification
