@@ -2,7 +2,7 @@
   <a href="https://github.com/dragos-cojocari/ms-teams-notification/actions"><img alt="ms-teams-notification status" src="https://github.com/dragos-cojocari/ms-teams-notification/workflows/Build%20&%20Test/badge.svg"></a>
 </p>
 
-Continues https://github.com/jdcargile/ms-teams-notification
+Continues https://github.com/marketplace/actions/microsoft-teams-notification
 
 Usage:
 ```yaml
