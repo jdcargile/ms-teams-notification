@@ -2,4 +2,12 @@
   <a href="https://github.com/dragos-cojocari/ms-teams-notification/actions"><img alt="ms-teams-notification status" src="https://github.com/dragos-cojocari/ms-teams-notification/workflows/Build%20&%20Test/badge.svg"></a>
 </p>
 
-Forked from https://github.com/jdcargile/ms-teams-notification
+Continues https://github.com/jdcargile/ms-teams-notification
+
+Usage:
+```yaml
+- name: Microsoft Teams Notifications DC
+  uses: dragos-cojocari/ms-teams-notification@v1.0.0
+```
+
+For more details on syntax and parameteres see https://github.com/jdcargile/ms-teams-notification
