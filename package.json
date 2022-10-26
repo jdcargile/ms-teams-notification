@@ -23,17 +23,17 @@
   "author": "jdcargile",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.10.0",
     "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^17.11.2",
-    "axios": "^0.19.2",
+    "axios": "^0.27.2",
     "moment-timezone": "^0.5.32",
     "octokit": "^1.0.0-hello-world"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
     "@types/moment-timezone": "^0.5.30",
-    "@types/node": "^12.19.9",
+    "@types/node": "^16.11.65",
     "@typescript-eslint/parser": "^2.34.0",
     "@zeit/ncc": "^0.20.5",
     "eslint": "^5.16.0",
