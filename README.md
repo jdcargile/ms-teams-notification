@@ -2,7 +2,7 @@
   <a href="https://github.com/jdcargile/ms-teams-notification/actions"><img alt="ms-teams-notification status" src="https://github.com/jdcargile/ms-teams-notification/workflows/Build%20&%20Test/badge.svg"></a>
 </p>
 
-# Microsoft Teams Notification 
+# Microsoft Teams Notification - Updated to Node16
 A GitHub Action that sends customizable notifications to a dedicated Microsoft Teams channel.
 
 ## Usage
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
         uses: jdcargile/ms-teams-notification@v1.3
