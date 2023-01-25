@@ -10,7 +10,7 @@ This is a fork of [jdcargile/ms-teams-notification](https://github.com/jdcargile
 ## Usage
 1. Add `MS_TEAMS_WEBHOOK_URI` on your repository's configs on Settings > Secrets. It is the [Webhook URI](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) of the dedicated Microsoft Teams channel for notification.
 
-2) Add a new `step` on your workflow code below `actions/checkout@v4`:
+2) Add a new `step` on your workflow code below `actions/checkout@v3`:
 
 ```yaml
 name: MS Teams Notification
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
         uses: jdziurdziewicz/ms-teams-notification@v1.0
