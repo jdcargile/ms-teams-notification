@@ -20,35 +20,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: ./
+
+    - name: Test - Deployment Started
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         notification-summary: Deployment Started 
         notification-color: 17a2b8
-        timezone: America/Denver 
-    - uses: ./
+        timezone: America/Denver
+
+    - name: Test - Warning!
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         notification-summary: Warning! Something Not Quite Right 
         notification-color: ffc107
-        timezone: America/Denver 
-    - uses: ./
+        timezone: America/Denver
+
+    - name: Test - Error!
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         notification-summary: OMG!! Something Exploded
         notification-color: dc3545
-        timezone: America/Denver 
-    - uses: ./
+        timezone: America/Denver
+
+    - name: Test - Success!
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         notification-summary: Whew! Everything is right with the world again! 
         notification-color: 28a745 
-        timezone: America/Denver 
-    - uses: ./
+        timezone: America/Denver
+
+    - name: Test - Emojify
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
