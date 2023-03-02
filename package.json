@@ -4,6 +4,9 @@
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/main.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier --write **/*.ts",
@@ -23,7 +26,7 @@
   "author": "jdcargile",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.6.0",
     "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^17.11.2",
     "axios": "^0.19.2",
@@ -33,7 +36,7 @@
   "devDependencies": {
     "@types/jest": "^24.9.1",
     "@types/moment-timezone": "^0.5.30",
-    "@types/node": "^12.19.9",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/parser": "^2.34.0",
     "@zeit/ncc": "^0.20.5",
     "eslint": "^5.16.0",
@@ -44,6 +47,6 @@
     "js-yaml": "^3.14.1",
     "prettier": "^1.19.1",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.5.4"
   }
 }
