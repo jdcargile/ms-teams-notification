@@ -27,5 +27,5 @@ inputs:
     description: 'The title for your release notes, defaults to Release Notes'
     required: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
