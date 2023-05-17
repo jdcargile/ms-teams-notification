@@ -20,7 +20,7 @@ export function createMessageCard(
   let author_url = ''
   if (author) {
     if (author.login && author.html_url) {
-      author_url = `[(${author.login})](${author.html_url})`
+      author_url = `[(@${author.login})](${author.html_url}) `
     }
   }
   const messageCard = {
@@ -36,7 +36,7 @@ export function createMessageCard(
           7
         )})** on [${repoName}](${repoUrl})`,
         activityImage: avatar_url,
-        activitySubtitle: `by ${commit.data.commit.author.name} ${author_url} on ${timestamp}`
+        activitySubtitle: `by ${commit.data.commit.author.name} ${author_url}on ${timestamp}`
       }
     ],
     potentialAction: [
