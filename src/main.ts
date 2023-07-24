@@ -25,11 +25,11 @@ const escapeMarkdownTokens = (text: string) =>
 
 const basicConfig = {
   success: {
-    title: 'Workflow succedeed &#x1F6A2 &#x2705',
+    title: 'Workflow succedeed 🚀 🥷🏼',
     color: '82f071'
   },
   failure: {
-    title: 'Workflow failed &#x1F6A2 &#x2705 🥰',
+    title: 'Workflow failed 😵🫠',
     color: 'd91633'
   },
   noStatus: {
