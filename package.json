@@ -26,6 +26,7 @@
     "@actions/core": "^1.2.6",
     "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^17.11.2",
+    "@vercel/ncc": "^0.36.1",
     "axios": "^0.19.2",
     "moment-timezone": "^0.5.32",
     "octokit": "^1.0.0-hello-world"
@@ -35,7 +36,6 @@
     "@types/moment-timezone": "^0.5.30",
     "@types/node": "^12.19.9",
     "@typescript-eslint/parser": "^2.34.0",
-    "@zeit/ncc": "^0.20.5",
     "eslint": "^5.16.0",
     "eslint-plugin-github": "^2.0.0",
     "eslint-plugin-jest": "^22.21.0",
@@ -44,6 +44,6 @@
     "js-yaml": "^3.14.1",
     "prettier": "^1.19.1",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.9.7"
+    "typescript": "^5.1.6"
   }
 }
