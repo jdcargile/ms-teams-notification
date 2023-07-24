@@ -66,7 +66,7 @@ const basicConfig = {
         color: '82f071'
     },
     failure: {
-        title: 'Workflow failed &#x1F6A2 &#x2705',
+        title: 'Workflow failed &#x1F6A2 &#x2705 🥰',
         color: 'd91633'
     },
     noStatus: {
