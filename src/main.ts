@@ -25,11 +25,11 @@ const escapeMarkdownTokens = (text: string) =>
 
 const basicConfig = {
   success: {
-    title: 'Workflow succedeed &#x1F680',
+    title: 'Workflow succedeed &#x1F6A2 &#x2705',
     color: '82f071'
   },
   failure: {
-    title: 'Workflow failed &#x1F635',
+    title: 'Workflow failed &#x1F6A2 &#x2705',
     color: 'd91633'
   },
   noStatus: {
@@ -106,7 +106,7 @@ async function run(): Promise<void> {
       })
   } catch (error) {
     console.log(error)
-    core.setFailed(error.message)
+    core.setFailed((error as any).message)
   }
 }
 

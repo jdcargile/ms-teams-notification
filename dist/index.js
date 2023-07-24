@@ -8,7 +8,11 @@
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -21,7 +25,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -58,11 +62,11 @@ const escapeMarkdownTokens = (text) => text
     .replace(/>/g, '\\>');
 const basicConfig = {
     success: {
-        title: 'Workflow succedeed &#x1F680',
+        title: 'Workflow succedeed &#x1F6A2 &#x2705',
         color: '82f071'
     },
     failure: {
-        title: 'Workflow failed &#x1F635',
+        title: 'Workflow failed &#x1F6A2 &#x2705',
         color: 'd91633'
     },
     noStatus: {
@@ -91,7 +95,7 @@ function run() {
             const notificationSummary = core.getInput('notification-summary') || defaultConfig.title;
             const notificationColor = core.getInput('notification-color') || defaultConfig.color;
             const timezone = core.getInput('timezone') || 'UTC';
-            const timestamp = moment_timezone_1.default()
+            const timestamp = (0, moment_timezone_1.default)()
                 .tz(timezone)
                 .format('dddd, MMMM Do YYYY, h:mm:ss a z');
             const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
@@ -104,7 +108,7 @@ function run() {
             const octokit = new rest_1.Octokit({ auth: `token ${githubToken}` });
             const commit = yield octokit.repos.getCommit(params);
             const author = commit.data.author;
-            const messageCard = yield message_card_1.createMessageCard(notificationSummary, notificationColor, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp);
+            const messageCard = yield (0, message_card_1.createMessageCard)(notificationSummary, notificationColor, commit, author, runNum, runId, repoName, sha, repoUrl, timestamp);
             console.log(messageCard);
             axios_1.default
                 .post(msTeamsWebhookUri, messageCard)
