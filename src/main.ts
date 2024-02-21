@@ -25,7 +25,8 @@ async function run(): Promise<void> {
       core.getInput('notification-summary') || 'GitHub Action Notification'
     const notificationColor = core.getInput('notification-color') || '0b93ff'
     const timezone = core.getInput('timezone') || 'UTC'
-    const verboseLogging = core.getInput('verbose-logging')
+    const verboseLogging =
+      core.getInput('verbose-logging').toLowerCase() === 'true'
     const timestamp = moment()
       .tz(timezone)
       .format('dddd, MMMM Do YYYY, h:mm:ss a z')
