@@ -23,27 +23,27 @@
   "author": "jdcargile",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@octokit/graphql": "^4.5.8",
-    "@octokit/rest": "^17.11.2",
-    "axios": "^0.19.2",
-    "moment-timezone": "^0.5.32",
-    "octokit": "^1.0.0-hello-world"
+    "@actions/core": "^1.10.0",
+    "@octokit/graphql": "^5.0.4",
+    "@octokit/rest": "^19.0.5",
+    "axios": "^1.2.1",
+    "moment-timezone": "^0.5.39-2022f",
+    "octokit": "^2.0.10"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^29.2.4",
     "@types/moment-timezone": "^0.5.30",
-    "@types/node": "^12.19.9",
-    "@typescript-eslint/parser": "^2.34.0",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/parser": "^5.47.0",
     "@zeit/ncc": "^0.20.5",
-    "eslint": "^5.16.0",
-    "eslint-plugin-github": "^2.0.0",
-    "eslint-plugin-jest": "^22.21.0",
+    "eslint": "^8.30.0",
+    "eslint-plugin-github": "^4.6.0",
+    "eslint-plugin-jest": "^27.1.7",
     "jest": "^24.9.0",
-    "jest-circus": "^24.9.0",
+    "jest-circus": "^29.3.1",
     "js-yaml": "^3.14.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.8.1",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.9.4"
   }
 }
