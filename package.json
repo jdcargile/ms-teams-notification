@@ -5,10 +5,10 @@
   "description": "TypeScript template action",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider tsc",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "pack": "ncc build",
+    "pack": "set NODE_OPTIONS=--openssl-legacy-provider ncc build",
     "all": "npm run build && npm run format && npm run pack"
   },
   "repository": {
