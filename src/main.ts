@@ -3,6 +3,8 @@ import {Octokit} from '@octokit/rest'
 import axios from 'axios'
 import moment from 'moment-timezone'
 import {createMessageCard} from './message-card'
+import { fetch as undiciFetch, ProxyAgent } from 'undici';
+import Options from 'undici/types/dispatcher';
 
 const escapeMarkdownTokens = (text: string) =>
   text
@@ -34,7 +36,14 @@ async function run(): Promise<void> {
     const sha = process.env.GITHUB_SHA || ''
     const runId = process.env.GITHUB_RUN_ID || ''
     const runNum = process.env.GITHUB_RUN_NUMBER || ''
-    const params = {owner, repo, ref: sha}
+    const proxyURI = process.env.https_proxy || process.env.HTTPS_PROXY || ''
+    const myFetch = (url: string, options: Options) => {
+      return undiciFetch(url, {
+        ...options,
+        dispatcher: new ProxyAgent({uri: proxyURI})
+      })
+    }
+    const params = {owner, repo, ref: sha, request: { fetch: myFetch }}
     const repoName = params.owner + '/' + params.repo
     const repoUrl = `https://github.com/${repoName}`
 

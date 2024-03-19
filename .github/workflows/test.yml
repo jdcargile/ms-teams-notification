@@ -8,18 +8,16 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
 
 jobs:
-  build: # make sure build/ci work properly
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - run: |
+    - name: Build
+      run: |
         npm install
         npm run all
-  test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: ./
+    - name: Test
+      uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
