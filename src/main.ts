@@ -4,6 +4,7 @@ import axios from 'axios'
 import moment from 'moment-timezone'
 import {createMessageCard} from './message-card'
 import { fetch as undiciFetch, ProxyAgent } from 'undici';
+import Options from 'undici/types/dispatcher';
 
 const escapeMarkdownTokens = (text: string) =>
   text
@@ -36,7 +37,7 @@ async function run(): Promise<void> {
     const runId = process.env.GITHUB_RUN_ID || ''
     const runNum = process.env.GITHUB_RUN_NUMBER || ''
     const proxyURI = process.env.https_proxy || process.env.HTTPS_PROXY || ''
-    const myFetch = (url, options) => {
+    const myFetch = (url: string, options: Options) => {
       return undiciFetch(url, {
         ...options,
         dispatcher: new ProxyAgent({uri: proxyURI})
