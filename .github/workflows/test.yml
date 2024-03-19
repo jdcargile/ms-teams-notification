@@ -24,31 +24,31 @@ jobs:
         notification-summary: Deployment Started 
         notification-color: 17a2b8
         timezone: America/Denver 
-    # - uses: ./
-    #   with: 
-    #     github-token: ${{ github.token }}
-    #     ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-    #     notification-summary: Warning! Something Not Quite Right 
-    #     notification-color: ffc107
-    #     timezone: America/Denver 
-    # - uses: ./
-    #   with: 
-    #     github-token: ${{ github.token }}
-    #     ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-    #     notification-summary: OMG!! Something Exploded
-    #     notification-color: dc3545
-    #     timezone: America/Denver 
-    # - uses: ./
-    #   with: 
-    #     github-token: ${{ github.token }}
-    #     ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-    #     notification-summary: Whew! Everything is right with the world again! 
-    #     notification-color: 28a745 
-    #     timezone: America/Denver 
-    # - uses: ./
-    #   with: 
-    #     github-token: ${{ github.token }}
-    #     ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-    #     notification-summary: "Emojify! &#x1F6A2​​ &#x2705;"
-    #     notification-color: 28a745 
-    #     timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: Warning! Something Not Quite Right 
+        notification-color: ffc107
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: OMG!! Something Exploded
+        notification-color: dc3545
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: Whew! Everything is right with the world again! 
+        notification-color: 28a745 
+        timezone: America/Denver 
+    - uses: ./
+      with: 
+        github-token: ${{ github.token }}
+        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        notification-summary: "Emojify! &#x1F6A2​​ &#x2705;"
+        notification-color: 28a745 
+        timezone: America/Denver 
